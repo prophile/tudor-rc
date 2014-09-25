@@ -9,9 +9,12 @@ int main() {
     SDL_Joystick* stick = SDL_JoystickOpen(0);
     while (1) {
         SDL_JoystickUpdate();
-        printf("[%d,%d]\n",
-               SDL_JoystickGetAxis(stick, 0),
-               SDL_JoystickGetAxis(stick, 1));
+        printf("[%d,%d,%s]\n",
+               SDL_JoystickGetAxis(stick, 3),
+               SDL_JoystickGetAxis(stick, 1),
+               SDL_JoystickGetButton(stick, 0) ? "true" : "false");
+        fflush(stdout);
+        SDL_Delay(100);
     }
 }
 
